@@ -9,3 +9,7 @@ def table_exists(conn, name):
         (name,),
     ).fetchone()
     return row is not None
+
+def row_count(conn, name):
+    """Количество строк в таблице name."""
+    return conn.execute(f"SELECT count(*) FROM {name}").fetchone()[0]
